@@ -2,10 +2,9 @@ import streamlit as st
 import numpy as np
 import joblib
 
-# Load the model
-with open(r'pricing.pkl', 'rb') as file:
-    model = joblib.load(file)
 
+# Load the model directly
+model = joblib.load("pricing.pkl")
 st.title("✈️ Flight Price Predictor")
 
 # Input fields
@@ -34,6 +33,7 @@ if st.button("Predict Price"):
 #if __name__ == '__main__':
    # main()
    
+
 
 
 
