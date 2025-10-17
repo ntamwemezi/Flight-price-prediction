@@ -3,7 +3,7 @@ import numpy as np
 import pickle
 
 # Load the model
-with open(r'C:\Users\pc\Desktop\Practical_cat\my_model.save', 'rb') as file:
+with open(r'C:\Users\pc\Desktop\Practical_cat\pricing.pkl', 'rb') as file:
     model = pickle.load(file)
 
 st.title("✈️ Flight Price Predictor")
@@ -34,3 +34,4 @@ if st.button("Predict Price"):
 #if __name__ == '__main__':
    # main()
    
+
