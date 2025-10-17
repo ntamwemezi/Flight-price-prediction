@@ -18,4 +18,5 @@ notebook>=7.4.5
 jupyter_client>=8.6.3
 jupyter_core>=5.8.1
 sklearn>=1.7.2
+joblib>=1.5.2
 sys>=3.13.7 
