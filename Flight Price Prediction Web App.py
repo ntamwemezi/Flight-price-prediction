@@ -3,7 +3,7 @@ import numpy as np
 import pickle
 
 # Load the model
-with open(pricing.pkl', 'rb') as file:
+with open(r'pricing.pkl', 'rb') as file:
     model = pickle.load(file)
 
 st.title("✈️ Flight Price Predictor")
