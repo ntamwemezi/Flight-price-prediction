@@ -2,19 +2,14 @@ import streamlit as st
 import numpy as np
 import joblib
 
-# Load the model
-#with open(r'pricing.pkl', 'rb') as file:
-#model = joblib.load(file)
-    
-model = joblib.load("pricing.pkl")
-
-with open("pricing.pkl", "rb") as file:
-     model = joblib.load(file)
-    try:
-        model = joblib.load("pricing.pkl")
+# Load the model safely
+try:
+    with open("pricing.pkl", "rb") as file:
+        model = joblib.load(file)
 except FileNotFoundError:
-    st.error("Model file not found. Please check 'pricing.pkl' is in the correct directory.")
+    st.error("❌ Model file not found. Please ensure 'pricing.pkl' is in the correct directory.")
     st.stop()
+
 st.title("✈️ Flight Price Predictor")
 
 # Input fields
@@ -33,19 +28,11 @@ duration = st.number_input("Duration (minutes)", min_value=0)
 
 # Predict button
 if st.button("Predict Price"):
-    input_data = np.array([airline, source, destination, total_stops, date, month, year,
-                           dep_hour, dep_min, arr_hour, arr_min, duration])
-    input_data = input_data.reshape(1, -1)
+    input_data = np.array([
+        airline, source, destination, total_stops,
+        date, month, year,
+        dep_hour, dep_min, arr_hour, arr_min, duration
+    ]).reshape(1, -1)
+
     prediction = model.predict(input_data)
-    st.success(f"Predicted Price: {prediction[0]:.2f} RWF")
-
-# Run the app
-# if __name__ == '__main__':
- #   main()
-   
-
-
-
-
-
-
+    st.success(f"💰 Predicted Price: {prediction[0]:,.2f} RWF")
