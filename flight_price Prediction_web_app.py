@@ -4,7 +4,7 @@ import joblib
 
 # Load the model
 #with open(r'pricing.pkl', 'rb') as file:
-    model = joblib.load(file)
+model = joblib.load(file)
 
 st.title("✈️ Flight Price Predictor")
 
@@ -34,5 +34,6 @@ if st.button("Predict Price"):
 # if __name__ == '__main__':
  #   main()
    
+
 
 
