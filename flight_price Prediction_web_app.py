@@ -9,7 +9,11 @@ model = joblib.load("pricing.pkl")
 
 with open("pricing.pkl", "rb") as file:
     model = joblib.load(file)
-    
+    try:
+    model = joblib.load("pricing.pkl")
+except FileNotFoundError:
+    st.error("Model file not found. Please check 'pricing.pkl' is in the correct directory.")
+    st.stop()
 st.title("✈️ Flight Price Predictor")
 
 # Input fields
@@ -38,6 +42,7 @@ if st.button("Predict Price"):
 # if __name__ == '__main__':
  #   main()
    
+
 
 
 
